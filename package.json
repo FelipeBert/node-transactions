@@ -1,12 +1,14 @@
 {
-  "name": "criando-api-rest-com-node",
-  "version": "1.0.0",
+  "name": "node-transactions",
+  "version": "1.0.1",
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "knex": "node --import tsx ./node_modules/knex/bin/cli.js",
+    "knex": "node --env-file=.env --loader ts-node/esm ./node_modules/.bin/knex --knexfile knexfile.ts",
     "test": "vitest",
-    "lint": "esling src --ext .ts"
+    "lint": "esling src --ext .ts",
+    "start": "tsx --env-file=.env src/server.ts",
+    "db:migrate": "npm run knex -- migrate:latest"
   },
   "keywords": [],
   "author": "Felipe Bertulino",
